@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Unit tests for student.js</title>
+    <link rel="stylesheet" href="qunit.css">
+</head>
+<body>
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="qunit.js"></script>
+<script src="../scripts/student.js"></script>
+
+<script>
+	// emptyFunction to stub methods
+	var emptyFunction = function () {
+	};
+
+	test("testing getWeapon", function(){
+		// setup
+		var weapon = {ap: 10, as: 0.2};
+		student.init = function(){
+			ok(true, "init called");
+			st = {};
+			st['weapon'] = weapon;
+		};
+		student.init();
+		
+		var result = student.getWeapon();
+		equal(result, weapon);
+	});
+
+	test("testing setWeapon/getWeapon with weapon ap: 10, as: 0.2", function () {
+		// setup
+		var weapon = {ap: 10, as: 0.2};		
+		student.setWeapon(weapon);
+		var result = student.getWeapon();
+		
+		equal(result,weapon);
+	});
+	
+	test("test aplyDamage(10)", function(){
+		// setup
+		var damage = 15;
+		var fullHP = 100;
+		student.init = function(){
+			ok(true, "init called");
+			st['hp'] = fullHP;
+		};
+		
+		student.applyDamage(15);
+		var result = student.getHP();
+		
+		equal(result, fullHP-damage);
+	});
+</script>
+</body>
+</html>
