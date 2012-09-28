@@ -3,32 +3,32 @@
 
 }
 var student = new function () {
-	var st = {hp: 100,
-			weapon: { ap: 0,
-					as: 0
-				}
-		}
-	this.init = function(){
-		// do something
-	};
+    this.state = {hp:100,
+        weapon:{ ap:0,
+            as:0
+        }
+    };
+    this.init = function () {
+        // do something
+    };
 
-	this.setWeapon = function(weapon){
-		st['weapon'] = weapon;
-	};
-	
-	this.getWeapon = function(){
-		return st['weapon'];
-	};
-	
-	this.applyDamage = function(damage){
-		st['hp'] = st['hp'] - damage;
-	};
-	
-	this.getHP = function(){
-		return st['hp'];
-	}
-	
-	this.imAlive = function(){
-		return st['hp'] > 0;
-	};
+    this.setWeapon = function (weapon) {
+        this.state.weapon = weapon;
+    };
+
+    this.getWeapon = function () {
+        return this.state.weapon;
+    };
+
+    this.applyDamage = function (damage) {
+        this.state.hp = this.state.hp - damage;
+    };
+
+    this.getHP = function () {
+        return this.state.hp;
+    };
+
+    this.isAlive = function () {
+        return this.state.hp > 0;
+    };
 }

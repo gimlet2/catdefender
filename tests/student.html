@@ -12,53 +12,45 @@
 <script src="../scripts/student.js"></script>
 
 <script>
-	// emptyFunction to stub methods
-	var emptyFunction = function () {
-	};
+    // emptyFunction to stub methods
+    var emptyFunction = function () {
+    };
 
-	test("testing getWeapon", function(){
-		// setup
-		var weapon = {ap: 10, as: 0.2};
-		student.setWeapon(weapon);
-		
-		var result = student.getWeapon();
-		equal(result, weapon);
-	});
+    test("testing setWeapon/getWeapon with weapon ap: 10, as: 0.2", function () {
+        // setup
+        var weapon = {ap:10, as:0.2};
+        student.setWeapon(weapon);
+        var result = student.getWeapon();
 
-	test("testing setWeapon/getWeapon with weapon ap: 10, as: 0.2", function () {
-		// setup
-		var weapon = {ap: 10, as: 0.2};
-		student.setWeapon(weapon);
-		var result = student.getWeapon();
-		
-		equal(result,weapon);
-	});
-	
-	test("test aplyDamage(10)", function(){
-		// setup
-		var damage = 15;
-		var fullHP = student.getHP();
-		
-		student.applyDamage(15);
-		var result = student.getHP();
-		
-		equal(result, fullHP-damage);
-	});
-	
-	test("test imAlive where damage < hp, damage = hp, damage > hp",function(){
-		var fullHP = student.getHP();
-		
-		student.applyDamage(15);
-		var result = student.imAlive(); // must true
-		equal(result, true);
-		
-		student.applyDamage(fullHP-15);
-		result = student.imAlive(); // must false
-		equal(result, false);
-		student.applyDamage(1);
-		result = student.imAlive(); // must false
-		equal(result, false);
-	});
+        equal(result, weapon, "weapon is set well.");
+    });
+
+    test("test applyDamage", function () {
+        // setup
+        var damage = 15;
+        var fullHP = student.getHP();
+
+        student.applyDamage(15);
+        var result = student.getHP();
+
+        equal(result, fullHP - damage, "hp was decreased for damage points.");
+    });
+
+    test("test imAlive where damage < hp, damage = hp, damage > hp", function () {
+        var fullHP = student.getHP();
+
+        student.applyDamage(15);
+        var result = student.isAlive(); // must true
+        equal(result, true, "is alive");
+
+        student.applyDamage(fullHP - 15);
+        result = student.isAlive(); // must false
+        equal(result, false, "is dead");
+
+        student.applyDamage(1);
+        result = student.isAlive(); // must false
+        equal(result, false, "is dead");
+    });
 </script>
 </body>
 </html>
