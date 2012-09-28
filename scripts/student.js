@@ -3,8 +3,7 @@
 
 }
 var student = new function () {
-	var st = {hp: 100,
-			weapon: { ap: 0,
+	var st = {weapon: { ap: 0,
 					as: 0
 				}
 		}
@@ -18,17 +17,5 @@ var student = new function () {
 	
 	this.getWeapon = function(){
 		return st['weapon'];
-	};
-	
-	this.applyDamage = function(damage){
-		st['hp'] = st['hp'] - damage;
-	};
-	
-	this.getHP = function(){
-		return st['hp'];
-	}
-	
-	this.imAlive = function(){
-		return st['hp'] > 0;
 	};
 }
