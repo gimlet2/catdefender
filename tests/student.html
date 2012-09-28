@@ -19,12 +19,7 @@
 	test("testing getWeapon", function(){
 		// setup
 		var weapon = {ap: 10, as: 0.2};
-		student.init = function(){
-			ok(true, "init called");
-			st = {};
-			st['weapon'] = weapon;
-		};
-		student.init();
+		student.setWeapon(weapon);
 		
 		var result = student.getWeapon();
 		equal(result, weapon);
@@ -32,7 +27,7 @@
 
 	test("testing setWeapon/getWeapon with weapon ap: 10, as: 0.2", function () {
 		// setup
-		var weapon = {ap: 10, as: 0.2};		
+		var weapon = {ap: 10, as: 0.2};
 		student.setWeapon(weapon);
 		var result = student.getWeapon();
 		
@@ -42,16 +37,27 @@
 	test("test aplyDamage(10)", function(){
 		// setup
 		var damage = 15;
-		var fullHP = 100;
-		student.init = function(){
-			ok(true, "init called");
-			st['hp'] = fullHP;
-		};
+		var fullHP = student.getHP();
 		
 		student.applyDamage(15);
 		var result = student.getHP();
 		
 		equal(result, fullHP-damage);
+	});
+	
+	test("test imAlive where damage < hp, damage = hp, damage > hp",function(){
+		var fullHP = student.getHP();
+		
+		student.applyDamage(15);
+		var result = student.imAlive(); // must true
+		equal(result, true);
+		
+		student.applyDamage(fullHP-15);
+		result = student.imAlive(); // must false
+		equal(result, false);
+		student.applyDamage(1);
+		result = student.imAlive(); // must false
+		equal(result, false);
 	});
 </script>
 </body>

@@ -29,6 +29,6 @@ var student = new function () {
 	}
 	
 	this.imAlive = function(){
-		return st['hp'] <= 0;
+		return st['hp'] > 0;
 	};
 }
