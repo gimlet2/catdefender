@@ -25,32 +25,6 @@
         equal(result, weapon, "weapon is set well.");
     });
 
-    test("test applyDamage", function () {
-        // setup
-        var damage = 15;
-        var fullHP = student.getHP();
-
-        student.applyDamage(15);
-        var result = student.getHP();
-
-        equal(result, fullHP - damage, "hp was decreased for damage points.");
-    });
-
-    test("test imAlive where damage < hp, damage = hp, damage > hp", function () {
-        var fullHP = student.getHP();
-
-        student.applyDamage(15);
-        var result = student.isAlive(); // must true
-        equal(result, true, "is alive");
-
-        student.applyDamage(fullHP - 15);
-        result = student.isAlive(); // must false
-        equal(result, false, "is dead");
-
-        student.applyDamage(1);
-        result = student.isAlive(); // must false
-        equal(result, false, "is dead");
-    });
 </script>
 </body>
 </html>
