@@ -1,37 +1,36 @@
 {
     // do load staff
-
 }
+
 var cat = new function () {
 	this.state = {hp: 0,
 			speed: 0,
 			posX: 0,
 			posY: 0
-		}
+		};
 	
 	this.init = function(hp, speed){
-		// do something
-		if (hp != null){
+		if (typeof hp != 'undefined'){
 			this.setHP(hp);
 		};
-		if (speed != null){
+		if (typeof speed != 'undefined'){
 			this.setSpeed(speed);
 		};
 	};
-
-	this.setHP(hp){
+	
+	this.setHP = function(hp){
 		this.state.hp = hp;
 	};
 	
-	this.getHP(){
-		return this.state.hp
-	}
+	this.getHP = function(){
+		return this.state.hp;
+	};
 	
-	this.isAlive(){
+	this.isAlive = function(){
 		return (this.state.hp > 0);
-	}
+	};
 	
-	this.setSpeed(speed){
+	this.setSpeed = function(speed){
 		this.state.speed = speed;
-	}
-}
+	};
+};
