@@ -20,18 +20,18 @@ var cat = new function () {
 	};
 
 	this.setHP(hp){
-		st['hp'] = hp;
+		st.hp = hp;
 	};
 	
 	this.getHP(){
-		return st['hp']
+		return st.hp
 	}
 	
 	this.isAlive(){
-		return (st['hp'] > 0);
+		return (st.hp > 0);
 	}
 	
 	this.setSpeed(speed){
-		st['speed'] = speed;
+		st.speed = speed;
 	}
 }
