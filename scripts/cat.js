@@ -3,7 +3,7 @@
 
 }
 var cat = new function () {
-	var st = {hp: 0,
+	this.state = {hp: 0,
 			speed: 0,
 			posX: 0,
 			posY: 0
@@ -20,18 +20,18 @@ var cat = new function () {
 	};
 
 	this.setHP(hp){
-		st.hp = hp;
+		this.state.hp = hp;
 	};
 	
 	this.getHP(){
-		return st.hp
+		return this.state.hp
 	}
 	
 	this.isAlive(){
-		return (st.hp > 0);
+		return (this.state.hp > 0);
 	}
 	
 	this.setSpeed(speed){
-		st.speed = speed;
+		this.state.speed = speed;
 	}
 }
