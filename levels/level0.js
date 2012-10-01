@@ -14,16 +14,20 @@
  *              enemy - one of class enemy
  *              count - count enemy in vawe
  *              start - start time between enemy in vawe
+ *      curves - curve for enemy
  */
 var level = {
-    timeInterval = 10,
-    enemies = {
-        0:{enemy: cat(100, 10),
+    levelId: 0,
+    name: _("First invansion"),
+    timeInterval: 10,
+    nextLVL: 1,
+    enemies: {
+        0:{enemy: new cat(100, 10),
             count: 1},
-        1:{enemy: cat(100, 20),
+        1:{enemy: new cat(100, 20),
             count: 1},
-        2:{enemy: cat(50, 20),
+        2:{enemy: new cat(70, 20),
             count: 2,
             start: 3}
-        }
+        },
     };

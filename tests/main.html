@@ -60,6 +60,12 @@
         // act
         main.init();
     });
+
+    test("test loadLevel", function(){
+        cat = function(a, b){};
+        var curlevel = main.loadLevel(0);
+        equal(curlevel.levelId, 0, "loaded first level");
+    });
 </script>
 </body>
 </html>
