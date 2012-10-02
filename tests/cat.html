@@ -18,48 +18,48 @@
 
     test("init without params", function () {
         // setup
-        cat.setHP = function (hp) {
+        Cat.setHP = function (hp) {
             ok(false, "setHP called");
         };
         
-        cat.setSpeed = function (speed) {
+        Cat.setSpeed = function (speed) {
             ok(false, "setSpeed called");
         };
         
-        cat.init();
-        equal(cat.state.hp, 0, "init runed without params hp is 0");
-        equal(cat.state.speed, 0, "init runed without params speed is 0");
+        Cat.init();
+        equal(Cat.state.hp, 0, "init runed without params hp is 0");
+        equal(Cat.state.speed, 0, "init runed without params speed is 0");
     });
 
     test("init with one params", function () {
         // setup
-        cat.setHP = function (hp) {
+        Cat.setHP = function (hp) {
             ok(true, "setHP called");
             this.state.hp = hp;
         };
-        cat.setSpeed = function (speed) {
+        Cat.setSpeed = function (speed) {
             ok(false, "setSpeed called");
         };
         
-        cat.init(100);
-        equal(cat.state.hp, 100, "init runed with param hp, hp is 100");
-        equal(cat.state.speed, 0, "init runed without param speed, speed is 0");
+        Cat.init(100);
+        equal(Cat.state.hp, 100, "init runed with param hp, hp is 100");
+        equal(Cat.state.speed, 0, "init runed without param speed, speed is 0");
     });
 
     test("init with two params", function () {
         // setup
-        cat.setHP = function (hp) {
+        Cat.setHP = function (hp) {
             ok(true, "setHP called");
             this.state.hp = hp;
         };
-        cat.setSpeed = function (speed) {
+        Cat.setSpeed = function (speed) {
             ok(true, "setSpeed called");
             this.state.speed = speed;
         };
         
-        cat.init(100, 10);
-        equal(cat.state.hp, 100, "init runed with param hp, hp is 100");
-        equal(cat.state.speed, 10, "init runed with param speed, speed is 10");
+        Cat.init(100, 10);
+        equal(Cat.state.hp, 100, "init runed with param hp, hp is 100");
+        equal(Cat.state.speed, 10, "init runed with param speed, speed is 10");
     });
 </script>
 </body>

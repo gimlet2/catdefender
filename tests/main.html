@@ -7,7 +7,8 @@
 </head>
 <body>
 <div id="qunit"></div>
-<div id="qunit-fixture"></div>
+<div id="qunit-fixture">
+</div>
 <script src="qunit.js"></script>
 <script src="../scripts/main.js"></script>
 
@@ -15,6 +16,16 @@
     // emptyFunction to stub methods
     var emptyFunction = function () {
     };
+
+
+    asyncTest("test loadLevel", function () {
+        Cat = emptyFunction;
+        onLevelLoad = function () {
+            equal(level.levelId, 0, "loaded first level");
+            start();
+        };
+        main.loadLevel(0);
+    });
 
     test("init method call loadLevel", function () {
         // setup
@@ -29,7 +40,7 @@
     test("init method call loadLevel with initial levelId", function () {
         // setup
         main.loadLevel = function (levelId) {
-            equal(levelId, 0, "loadLevel called with id = 0")
+            equal(levelId, 0, "loadLevel called with id = 0");
             return {levelId:levelId};
         };
         // act
@@ -46,7 +57,6 @@
         // act
         main.init();
     });
-
     test("init method call getState with level from loadLevel", function () {
         // setup
         var expectedLevel;
@@ -59,12 +69,6 @@
         };
         // act
         main.init();
-    });
-
-    test("test loadLevel", function(){
-        cat = function(a, b){};
-        var curlevel = main.loadLevel(0);
-        equal(curlevel.levelId, 0, "loaded first level");
     });
 </script>
 </body>
