@@ -1,8 +1,3 @@
-{
-    // do load staff
-
-}
-
 function _(text) {
     return text;
 }
@@ -21,23 +16,40 @@ function loadScript(section, url) {
 }
 
 var main = new function () {
-
+    var self;
+    var state;
     this.init = function () {
-        var level = this.loadLevel(0);
-        var state = this.getState(level);
-        while (!state.isFinished) {
+        self = this;
+        this.loadLevel(0, function () {
+            state = self.getState();
+            setInterval(function () {
+                self.draw();
+            }, 200);
+        });
 
+    };
+
+    this.draw = function () {
+        if (typeof state.attack !== "undefined") {
+            document.getElementById("game").innerHTML = state.attack.x + " : " + state.attack.y;
         }
     };
 
-    this.loadLevel = function (levelId) {
-        loadScript("level", "../levels/level" + levelId + ".js");
+    this.loadLevel = function (levelId, levelLoaded) {
+        onLevelLoad = levelLoaded;
+        loadScript("level", "levels/level" + levelId + ".js");
     };
 
-    this.getState = function (level) {
+    this.getState = function () {
         return {
             levelId:level.levelId,
             isFinished:true
+        }
+    };
+    // external event call(mouse click, keyboard etc.)
+    this.onStateChange = function (event) {
+        if (event.type == 'click') {
+            state.attack = {x:event.pageX, y:event.pageY};
         }
     };
 };
@@ -45,3 +57,9 @@ var main = new function () {
 var onLevelLoad = function () {
     alert(111);
 };
+
+{
+    // do load staff
+    main.init();
+
+}

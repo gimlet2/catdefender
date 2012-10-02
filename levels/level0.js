@@ -22,11 +22,11 @@ var level = {
     timeInterval:10,
     nextLVL:1,
     enemies:{
-        0:{enemy:new Cat(100, 10),
+        0:{enemy:cat.init(100, 10),
             count:1},
-        1:{enemy:new Cat(100, 20),
+        1:{enemy:cat.init(100, 20),
             count:1},
-        2:{enemy:new Cat(70, 20),
+        2:{enemy:cat.init(70, 20),
             count:2,
             start:3}
     }

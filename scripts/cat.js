@@ -2,7 +2,7 @@
     // do load staff
 }
 
-var Cat = new function () {
+var cat = new function () {
     this.state = {hp:0,
         speed:0,
         posX:0,

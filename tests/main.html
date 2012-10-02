@@ -18,18 +18,29 @@
     };
 
 
+    asyncTest("init method call getState", function () {
+        // setup
+        cat = emptyFunction;
+        main.getState = function (level) {
+            ok(true, "getState called");
+            start();
+            return {isFinished:true};
+        };
+        // act
+        main.init();
+    });
+
     asyncTest("test loadLevel", function () {
-        Cat = emptyFunction;
-        onLevelLoad = function () {
+        cat = emptyFunction;
+        main.loadLevel(0, function () {
             equal(level.levelId, 0, "loaded first level");
             start();
-        };
-        main.loadLevel(0);
+        });
     });
 
     test("init method call loadLevel", function () {
         // setup
-        main.loadLevel = function (levelId) {
+        main.loadLevel = function (levelId, func) {
             ok(true, "loadLevel called");
             return {levelId:levelId};
         };
@@ -47,29 +58,6 @@
         main.init();
     });
 
-    test("init method call getState", function () {
-        // setup
-        main.loadLevel = emptyFunction;
-        main.getState = function (level) {
-            ok(true, "getState called");
-            return {isFinished:true};
-        };
-        // act
-        main.init();
-    });
-    test("init method call getState with level from loadLevel", function () {
-        // setup
-        var expectedLevel;
-        main.loadLevel = function () {
-            return expectedLevel;
-        };
-        main.getState = function (level) {
-            deepEqual(level, expectedLevel, "loaded level passed to getState");
-            return {isFinished:true};
-        };
-        // act
-        main.init();
-    });
 </script>
 </body>
 </html>
