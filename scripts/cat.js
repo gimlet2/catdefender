@@ -6,7 +6,8 @@ var cat = new function () {
     this.state = {hp:0,
         speed:0,
         posX:0,
-        posY:0
+        posY:0,
+        dimension:{radius: 0};
     };
 
     this.init = function (hp, speed) {
@@ -33,4 +34,8 @@ var cat = new function () {
     this.setSpeed = function (speed) {
         this.state.speed = speed;
     };
+    
+    this.checkCollision = function(x, y){
+        return (Math.sqrt((this.posX + x) * (this.posX + x) + (this.posY + y) * (this.posY + Y)) < this.dimension.radius*this.dimension.radius);
+    }
 };
