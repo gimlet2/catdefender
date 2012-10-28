@@ -10,12 +10,15 @@ var cat = new function () {
         dimension:{radius: 0};
     };
 
-    this.init = function (hp, speed) {
+    this.init = function (hp, speed, dimension) {
         if (typeof hp != 'undefined') {
             this.setHP(hp);
         }
         if (typeof speed != 'undefined') {
             this.setSpeed(speed);
+        }
+        if (typeof dimension != 'undefined') {
+            this.dimension = dimension;
         }
     };
 
