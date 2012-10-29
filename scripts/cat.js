@@ -7,7 +7,7 @@ var cat = new function () {
         speed:0,
         posX:0,
         posY:0,
-        dimension:{radius: 0};
+        dimension:{radius: 0}
     };
 
     this.init = function (hp, speed, dimension) {

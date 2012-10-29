@@ -48,9 +48,10 @@ var main = new function () {
     };
     // external event call(mouse click, keyboard etc.)
     this.onStateChange = function (event) {
+        state.attack = {x:event.pageX, y:event.pageY};
         if (event.type == 'click') {
             for( var i = 0; level.enemies.length; i++ ) {
-                if (level.enemies.enemy.checkCollision(even.pageX, event.pageY)) {
+                if (level.enemies.enemy.checkCollision(event.pageX, event.pageY)) {
                     state.attack = {x:event.pageX, y:event.pageY};
                 }
             }
@@ -65,5 +66,4 @@ var onLevelLoad = function () {
 {
     // do load staff
     main.init();
-
 }
