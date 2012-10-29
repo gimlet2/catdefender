@@ -49,7 +49,11 @@ var main = new function () {
     // external event call(mouse click, keyboard etc.)
     this.onStateChange = function (event) {
         if (event.type == 'click') {
-            state.attack = {x:event.pageX, y:event.pageY};
+            for( var i = 0; level.enemies.length; i++ ) {
+                if (level.enemies.enemy.checkCollision(even.pageX, event.pageY)) {
+                    state.attack = {x:event.pageX, y:event.pageY};
+                }
+            }
         }
     };
 };
