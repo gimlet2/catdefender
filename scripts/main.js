@@ -50,9 +50,11 @@ var main = new function () {
     this.onStateChange = function (event) {
         state.attack = {x:event.pageX, y:event.pageY};
         if (event.type == 'click') {
-            for( var i = 0; level.enemies.length; i++ ) {
-                if (level.enemies.enemy.checkCollision(event.pageX, event.pageY)) {
+            for( var key in level.enemies ) {
+                var enemy = level.enemies[key].enemy;
+                if (enemy.checkCollision(event.pageX, event.pageY)) {
                     state.attack = {x:event.pageX, y:event.pageY};
+                    alert("kill enemy.id=" + key);
                 }
             }
         }

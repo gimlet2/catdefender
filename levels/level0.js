@@ -9,6 +9,7 @@
  *  format file
  *  level
  *      timeInterval - time between two vawes
+ *      spawnPoint - default point of spawn enemies.
  *      enemies - enum enemy vawes
  *          id: - number vawe
  *              enemy - one of class enemy
@@ -21,12 +22,13 @@ var level = {
     name:_("First invansion"),
     timeInterval:10,
     nextLVL:1,
+    spawnPoint: { X: 0; Y: 0; },
     enemies:{
-        0:{enemy:cat.init(100, 10, {radius: 10}),
+        0:{enemy:cat.init(100, 10, {radius: 100}),
             count:1},
-        1:{enemy:cat.init(100, 20, {radius: 10}),
+        1:{enemy:cat.init(100, 20, {radius: 100}),
             count:1},
-        2:{enemy:cat.init(70, 20, {radius: 5}),
+        2:{enemy:cat.init(70, 20, {radius: 55}),
             count:2,
             start:3}
     }

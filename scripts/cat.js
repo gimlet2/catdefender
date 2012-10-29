@@ -18,8 +18,9 @@ var cat = new function () {
             this.setSpeed(speed);
         }
         if (typeof dimension != 'undefined') {
-            this.dimension = dimension;
+            this.state.dimension = dimension;
         }
+        return this;
     };
 
     this.setHP = function (hp) {
@@ -39,6 +40,8 @@ var cat = new function () {
     };
     
     this.checkCollision = function(x, y){
-        return (Math.sqrt((this.posX + x) * (this.posX + x) + (this.posY + y) * (this.posY + Y)) < this.dimension.radius*this.dimension.radius);
+        return ((x - this.state.posX) * (x - this.state.posX) + 
+                (y - this.state.posY) * (y - this.state.posY)) <= 
+                this.state.dimension.radius * this.state.dimension.radius;
     }
 };
